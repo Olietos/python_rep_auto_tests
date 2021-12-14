@@ -11,6 +11,6 @@ def test_positive(baseFixture, dataUserFixture):
 
     assert \
         response.status_code == 200 and \
-        baseFixture.checkerContainer.validateSchema('schemaPostUserResp', response.json()) and \
+        baseFixture.checkerContainer.validateSchema('schemaPstUserResp', response.json()) and \
         baseFixture.checkerContainer.checkerApiUser.checkPostUser(response, responseGet, iInputPostUser)
 
