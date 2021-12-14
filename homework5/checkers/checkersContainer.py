@@ -8,7 +8,7 @@ class CheckersContainer:
         self.checkerApiUser = CheckerApiUser()
 
     def getSchema(self, schemaFileName):
-        with open(f'../schemas/{schemaFileName}.json', 'r') as file:
+        with open(f'../../schemas/{schemaFileName}.json', 'r') as file:
             schema = json.load(file)
         return schema
 

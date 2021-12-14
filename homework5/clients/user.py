@@ -12,7 +12,7 @@ class ApiUser:
         iHeaders = self.headers.copy()
 
         iReqDict = {
-            "id": iInputData['userId'],
+            "id": iInputData['id'],
             "username": iInputData['username'],
             "firstName": iInputData['firstName'],
             "lastName": iInputData['lastName'],
@@ -30,10 +30,11 @@ class ApiUser:
         iApiMethod = f"/v2/user/{tmpiInputData}"
         iUrl = self.url + iApiMethod
         iHeaders = self.headers.copy()
+        print(iInputData['username'])
 
         iReqDict = {
-            "id": iInputData['userId'],
-            "username": iInputData['userName'],
+            "id": iInputData['id'],
+            "username": iInputData['username'],
             "firstName": iInputData['firstName'],
             "lastName": iInputData['lastName'],
             "email": iInputData['email'],
@@ -45,13 +46,13 @@ class ApiUser:
         iResponse = requests.request("PUT", iUrl, headers=iHeaders, json=iReqDict)
         return iResponse
 
-    def postUser(self, userId, userName, firstName, lastName, email, password, phone):
+    def postUser(self, id, userName, firstName, lastName, email, password, phone):
         iApiMethod = f"/v2/user"
         iUrl = self.url + iApiMethod
         iHeaders = self.headers.copy()
 
         iReqDict = {
-            "id": userId,
+            "id": id,
             "username": userName,
             "firstName": firstName,
             "lastName": lastName,
@@ -64,13 +65,13 @@ class ApiUser:
         iResponse = requests.request("POST", iUrl, headers=iHeaders, json=iReqDict)
         return iResponse
 
-    def putUser(self, userId, userName, firstName, lastName, email, password, phone):
+    def putUser(self, id, userName, firstName, lastName, email, password, phone):
         iApiMethod = f"/v2/user/{userName}"
         iUrl = self.url + iApiMethod
         iHeaders = self.headers.copy()
 
         iReqDict = {
-            "id": userId,
+            "id": id,
             "username": userName,
             "firstName": firstName,
             "lastName": lastName,
