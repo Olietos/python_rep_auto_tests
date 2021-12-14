@@ -6,6 +6,6 @@ def test_positive(baseFixture, dataUserFixture):
 
     assert \
         responseGet.status_code == 200 and \
-        baseFixture.checkerContainer.validateSchema('schemaGetUserResp', responseGet.json()) and \
+        baseFixture.checkerContainer.validateSchema('schemaGetUserResp', responseGet.json(), baseFixture.ROOT_DIR) and \
         baseFixture.checkerContainer.checkerApiUser.checkGetUser(responseGet, iInputPostUser)
 

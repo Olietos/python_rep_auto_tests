@@ -1,7 +1,6 @@
 def test_positive(baseFixture, dataUserFixture):
     sessionToken = baseFixture.configs.authToken
     iInputPostUser = dataUserFixture.getDataPostUser()
-    print(iInputPostUser)
     baseFixture.api.apiUser.postUserDict(**iInputPostUser)
     iInputPutUser = dataUserFixture.getDataPutUser()
     response = baseFixture.api.apiUser.putUserDict(**iInputPutUser)
@@ -9,5 +8,5 @@ def test_positive(baseFixture, dataUserFixture):
 
     assert \
         response.status_code == 200 and \
-        baseFixture.checkerContainer.validateSchema('schemaPutUserResp', response.json()) and \
+        baseFixture.checkerContainer.validateSchema('schemaPutUserResp', response.json(), baseFixture.ROOT_DIR) and \
         baseFixture.checkerContainer.checkerApiUser.checkPutUser(response, responseGet, iInputPutUser)
