@@ -1,10 +1,12 @@
 import requests
+from helpers.helper import ApiHelper
 
 
 class ApiUser:
     def __init__(self, url):
         self.url = url
         self.headers = {"Accept": "application/json", "content-type": "application/json"}
+        self.helper = ApiHelper()
 
     def postUserDict(self, **iInputData):
         iApiMethod = f"/v2/user"
@@ -22,11 +24,12 @@ class ApiUser:
             "userStatus": 0
         }
 
-        iResponse = requests.request("POST", iUrl, headers=iHeaders, json=iReqDict)
+        # iResponse = requests.request("POST", iUrl, headers=iHeaders, json=iReqDict)
+        iResponse = self.helper.request("POST", iUrl, headers=iHeaders, json=iReqDict)
         return iResponse
 
     def putUserDict(self, **iInputData):
-        tmpiInputData=iInputData['username']
+        tmpiInputData = iInputData['username']
         iApiMethod = f"/v2/user/{tmpiInputData}"
         iUrl = self.url + iApiMethod
         iHeaders = self.headers.copy()
@@ -43,7 +46,8 @@ class ApiUser:
             "userStatus": 0
         }
 
-        iResponse = requests.request("PUT", iUrl, headers=iHeaders, json=iReqDict)
+        # iResponse = requests.request("PUT", iUrl, headers=iHeaders, json=iReqDict)
+        iResponse = self.helper.request("PUT", iUrl, headers=iHeaders, json=iReqDict)
         return iResponse
 
     def postUser(self, id, userName, firstName, lastName, email, password, phone):
@@ -89,5 +93,7 @@ class ApiUser:
         iUrl = self.url + iApiMethod
         iHeaders = self.headers.copy()
 
-        iResponse = requests.request("GET", iUrl, headers=iHeaders)
+        # iResponse = requests.request("GET", iUrl, headers=iHeaders)
+        iResponse = self.helper.request("GET", iUrl, headers=iHeaders)
+
         return iResponse
